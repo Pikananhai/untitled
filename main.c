@@ -2142,48 +2142,592 @@
 //	return 0;
 //}
 
+//int main() {
+//	int x = 0;//arr1的数组元素个数
+//	int y = 0;//arr2的数组元素个数
+//	scanf("%d %d", &x, &y);
+//	int arr1[x];
+//	int arr2[y];
+//	int arr[x + y];//将arr1 arr2合并到arr
+//
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < x; i++) {
+//		scanf("%d", &arr1[i]);
+//	}
+//	for (i = 0; i < y; i++) {
+//		scanf("%d", &arr2[i]);
+//	}
+//	//合并
+//	i = 0;
+//	for (j = 0; j < x; j++) {
+//		arr[i++] = arr1[j];
+//	}
+//	for (j = 0; j < y; j++) {
+//		arr[i++] = arr2[j];
+//	}
+//	//冒泡排序
+//	for (j = 0; j < x + y - 1; j++) {
+//		for (i = 0; i < x + y - j - 1; i++) {
+//			if (arr[i] > arr[i + 1]) {
+//				int tmp = arr[i];
+//				arr[i] = arr[i + 1];
+//				arr[i + 1] = tmp;
+//			}
+//		}
+//	}
+//	for (i = 0; i < x + y; i++) {
+//		printf("%d ", arr[i]);
+//	}
+//
+//	return 0;
+//}
+
+//int main() {
+//	//常量字符不能被修改
+//	const char* p = "hello world";//a地址给了p
+//	char arr[] = "hello world";
+//	printf("%s\n", p);
+//	printf("%s\n",arr);
+//
+//	return 0;
+//}
+
+//int main() {
+//    const char* p1 = "abcdef";
+//    const char* p2 = "abcdef";
+//
+//    char arr1[] = "abcdef";
+//    char arr2[] = "abcdef";
+//
+//    if (p1 == p2)
+//        printf("p1==p2\n");
+//    else
+//        printf("p1!=p2\n");
+//
+//    if (arr1 == arr2)
+//        printf("arr1 == arr2\n");
+//    else
+//        printf("arr1 != arr2\n");
+//
+//    return 0;
+//}
+
+//int main() {
+//	int arr1[] = {1, 2, 3, 4, 5};
+//	int arr2[] = {2, 3, 4, 5, 6};
+//	int arr3[] = {3, 4, 5, 6, 7};
+//	int* arr[] = {arr1, arr2, arr3};
+//
+//	for (int i = 0; i < 3; i++) {
+//		for (int j = 0; j < 5; j++) {
+//			printf("%d ", arr[i][j]);
+//			printf("%d ", *(arr[i] + j));
+//		}
+//		printf("\n");
+//	}
+//
+//	return 0;
+//}
+
+//int main() {
+//    int arr[10] = { 0 };
+//    printf("%p\n", arr);
+//    printf("%p\n", arr + 1);
+//
+//    printf("%p\n", &arr[0]);
+//    printf("%p\n", &arr[0] + 1);
+//
+//    printf("%p\n", &arr);
+//    printf("%p\n", &arr + 1);
+//
+//    //int sz = sizeof(arr);
+//    //printf("%d\n", sz);
+//
+//    return 0;
+//}
+////数组名通常表示的都是数组首元素的地址
+////但是有2个例外:
+////1. sizeof(数组名),这里的数组名表示整个数组,计算的是整个数组的大小
+////2. &数组名,这里的数组名表示的依然是整个数组,所以&数组名取出的是整个数组的地址
+
+//int main() {
+//	int arr[10] = { 0 };
+//	int* p = arr;
+//	int (*p1)[10] = &arr;
+//
+//	return 0;
+//}
+
+//int main() {
+//	int arr[5] = { 1,2,3,4,5 };
+//	int (*p)[5] = &arr;
+//	printf("%d\n", p);
+//	printf("%p\n", p);
+//	printf("%p\n", p + 1);
+//
+//	printf("%d\n", *p);
+//	printf("%p\n", *p);
+//	printf("%p\n", (*p) + 1);
+//
+//	return 0;
+//}
+
+//void print_str(char** p) {
+//    // 第一步：p是char**，存储的是str_arr首元素的地址（0x6000）
+//    printf("p的值（str_arr首元素地址）：%p\n", p);    // 输出0x6000
+//    // 第二步：*p是char*，拿到str_arr[0]的值（0x8000）
+//    printf("*p的值（指向hello的指针）：%p\n", *p);    // 输出0x8000
+//    // 第三步：**p是char，拿到hello的第一个字符'h'
+//    printf("**p的值（hello的首字符）：%c\n", **p);   // 输出'h'
+//    // 访问第二个元素：*(p+1)是str_arr[1]的值（0x9000）
+//    printf("*(p+1)指向的字符串：%s\n", *(p + 1));  // 输出"world"
+//    printf("**(p+1)：%c\n", **(p + 1));  // 输出"w"
+//}
+//
+//int main() {
+//    char* str_arr[] = { "hello", "world" };
+//    // 传参：str_arr退化为char**，值是0x6000
+//    print_str(str_arr);
+//    return 0;
+//}
+
+//void p(char** p) {
+//	printf("1 %d\n", *(p + 1));
+//	printf("2 %p\n", *(p + 1));
+//	printf("3 %s\n", *(p + 1));
+//}
+//
+//int main() {
+//	char* str_arr[] = { "apple", "banana", "cherry" };
+//	p(str_arr);
+//
+//	return 0;
+//}
+
+//编写代码：定义 int 数组arr[5] = { 10,20,30,40,50 }，用数组指针p指向该数组，通过p分别打印：
+//(1) 数组的起始地址、p + 1的地址（验证偏移量）；
+//(2) 数组的第三个元素（30）、第五个元素（50）
+//int main() {
+//	int arr[5] = { 10,20,30,40,50 };
+//	int (*p)[5] = &arr;
+//	printf("数组的起始地址为%p,p + 1的地址为%p\n", p, p + 1);
+//	printf("数组的第三个元素为%d,第五个元素为%d\n", (*p)[2], (*p)[4]);
+//
+//	return 0;
+//}
+
+//编写代码：定义指针数组char* fruits[] = { "apple", "banana", "cherry" };
+//写一个函数，接收该数组（用二级指针作形参），遍历打印所有字符串，并统计字符串的总个数
+//void f(char **p) {
+//	int count = 0;
+//	for (int i = 0; i < 3; i++) {
+//		printf("%s ", *(p + i);
+//		count++;
+//	}
+//	printf("\n");
+//	printf("%d", count);
+//}
+//
+//int main() {
+//	char* fruits[] = { "apple", "banana", "cherry" };
+//	f(fruits);
+//
+//	return 0;
+//}
+
+//int main() {
+//    char* str_arr[] = { "a", "b" };
+//    char** pp = str_arr;
+//
+//    // 打印pp存储的值（str_arr的地址 = str_arr[0]的地址）
+//    printf("pp存储的值：%p（str_arr[0]的地址）\n", pp);
+//    // 打印str_arr[0]的地址（和pp存储的值一样）
+//    printf("&str_arr[0]：%p\n", &str_arr[0]);
+//    // 打印str_arr[0]存储的值（'a'的地址）
+//    printf("str_arr[0]：%p（'a'的地址）\n", str_arr[0]);
+//    // 打印*pp（解引用pp，拿到str_arr[0]的值 = 'a'的地址）
+//    printf("*pp：%p（'a'的地址）\n", *pp);
+//
+//    return 0;
+//}
+
+//int main() {
+//	char* str_arr[] = { "m", "n" };
+//	int ret = sizeof(str_arr);
+//	printf("%d\n", ret);
+//
+//	return 0;
+//}
+
+//int main() {
+//    int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//    int (*p)[10] = &arr;
+//
+//    int i = 0;
+//    int sz;
+//    sz = sizeof(arr) / sizeof(arr[0]);
+//    for (i = 0; i < sz; i++) {
+//        printf("%d ", *(*p + i));
+//    }
+//    printf("\n");
+//    for (i = 0; i < sz; i++) {
+//        printf("%d ", p[0][i]);
+//    }
+//    printf("\n");
+//    for (i = 0; i < sz; i++) {
+//        printf("%d ", (*p)[i]);
+//    }
+//    printf("\n");
+//
+//    return 0;
+//}
+
+////舒服的写法
+//void print1(int arr[3][4], int row, int col) {
+//	for (int i = 0; i < row; i++) {
+//		for (int j = 0; j < col; j++) {
+//			printf("%d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//void print2(int arr[][4], int row, int col) {
+//	for (int i = 0; i < row; i++) {
+//		for (int j = 0; j < col; j++) {
+//			printf("%d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+////舒服的写法
+//void print3(int (*p)[4], int row, int col) {
+//	for (int i = 0; i < row; i++) {
+//		for (int j = 0; j < col; j++) {
+//			printf("%d ", p[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//
+//// 调用函数时，arr被强制转换成了 int* 类型！
+//void print4(int* arr, int row, int col) {
+//	for (int i = 0; i < row; i++) {
+//		for (int j = 0; j < col; j++) {
+//			printf("%d ", *(arr + i * col + j));
+//		}
+//		printf("\n");
+//	}
+//}
+//
+//int main() {
+//	int arr[3][4] = { 1,2,3,4,2,3,4,5,3,4,5,6 };
+//	print1(arr, 3, 4);
+//	printf("\n");
+//	print2(arr, 3, 4);
+//	printf("\n");
+//	print3(arr, 3, 4);
+//	printf("\n");
+//	print4(arr, 3, 4);
+//
+//	int* p = (int*)arr;
+//	printf("%p\n", arr);
+//	printf("%p\n", arr + 1);
+//	printf("%p\n", arr[0]);
+//	printf("%p\n", arr[0] + 1);
+//
+//	return 0;
+//}
+
+//int main() {
+//	int arr[3][4] = { 1,2,3,4,2,3,4,5,3,4,5,6 };
+//	printf("%p\n", arr);
+//	printf("%p\n", arr+1);
+//	printf("%p\n", &arr);
+//	printf("%p\n", &arr+1);
+//
+//	return 0;
+//}
+
+//int Add(int x, int y) {
+//	return x + y;
+//}
+//
+//int main() {
+//	int arr[5] = { 0 };
+//	int* p0 = arr;
+//	int (*p1)[5] = &arr;//数组指针
+//	printf("%p\n", &Add);
+//	printf("%p\n", Add);
+//	//对于函数来说，&函数名和函数名都是函数的地址
+//	int (*pf0)(int, int) = &Add;
+//	int (*pf1)(int, int) = Add;
+//	printf("%p\n", pf0);
+//	printf("%p\n", pf1);
+//	int ret0 = (*pf0)(2, 3);
+//	int ret1 = pf0(2, 3);//这样写也可以,而且你括号里放多少个*都一样，只是方便理解
+//	printf("%d\n", ret0);
+//	printf("%d\n", ret1);
+//
+//	return 0;
+//}
+
+//int Add(int x, int y) {
+//	return x + y;
+//}
+//
+//void cacl(int (*pf)(int, int)) {
+//	int a = 3;
+//	int b = 2;
+//	int ret = pf(3, 2);
+//	printf("%d\n", ret);
+//}
+//
+//int main() {
+//	cacl(Add);
+//
+//	return 0;
+//}
+
+//int test(const char* str) {
+//    printf("test()\n");
+//    return 0;
+//}
+//
+//int main() {
+//    //函数指针 - 也是一种指针，是指向函数的指针
+//    //printf("%p\n", test);
+//    //printf("%p\n", &test);
+//    int (*pf)(const char*) = test;
+//    //(*pf)("abc");
+//    ////pf 和 test
+//    //test("abc");
+//    //pf("abc");
+//    printf("%d\n", sizeof(test));
+//    printf("%d\n", sizeof(&test));
+//    printf("%d\n", sizeof(*pf));
+//    printf("%d\n", sizeof(pf));
+//
+//    return 0;
+//}
+
+//int Add(int x, int y) {
+//	return x + y;
+//}
+//
+//int Sub(int x, int y) {
+//	return x - y;
+//}
+//
+//int Mul(int x, int y) {
+//	return x * y;
+//}
+//
+//int Div(int x, int y) {
+//	return x / y;
+//}
+//
+//int main() {
+//	int (*pf)(int, int) = Add;//pf是函数指针
+//	int (*pfArr[4])(int, int) = { Add, Sub, Mul, Div };//arr函数指针数组
+//	//指向【函数指针数组】的指针
+//	int (*(*ppfArr)[4])(int, int) = &pfArr;
+//
+//	int i = 0;
+//	for (i = 0; i < 4; i++) {
+//		printf("%d\n", pfArr[i](2, 2));
+//	}
+//
+//	return 0;
+//}
+
+//void bobble_sort(int arr[], int len) {
+//	//冒泡排序 升序
+//	int i = 0;
+//	int j = 0;
+//	int flag = i;//假设数组是排好序的
+//	//趟数
+//	for (i = 0; i < len - 1; i++) {
+//		//一趟冒泡
+//		for (j = 0; j < len - 1 - i; j++) {
+//			if (arr[j] > arr[j + 1]) {
+//				int tmp = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = tmp;
+//				flag = 0;
+//			}
+//		}
+//		if (flag == 1) {
+//			break;
+//		}
+//	}
+//}
+
+//类型必须这样写
+//比较两个整型元素
+//e1指向一个元素
+//e2指向一个元素
+//void*是无具体类型的指针，可以接受任意类型的地址。所以不能解引用操作，也不能+-整数
+//#include <stdlib.h>
+//int cmp_int(const void* e1, const void* e2) {
+//	return (*(int*)e1 - *(int*)e2);//升序
+//	//return (*(int*)e2 - *(int*)e1);//降序
+//}
+//
+//int main() {
+//	int arr[] = { 9, 3, 6, 0, 7, 10, 88, 2, 9, 4 };
+//	int len = sizeof(arr) / sizeof(arr[0]);
+//	//bobble_sort(arr, len);
+//	//库函数qsort快速排序 参数1.排序元素的起始位置 2.排序元素的长度 3.每个元素的大小 4.比较方式
+//	qsort(arr, len, sizeof(arr[0]), cmp_int);
+//
+//	for (int i = 0; i < len; i++) {
+//		printf("%d ", arr[i]);
+//	}
+//
+//	return 0;
+//}
+//void bobble_sort(int arr[], int len) {
+//	//冒泡排序 升序
+//	int i = 0;
+//	int j = 0;
+//	int flag = 1;//假设数组是排好序的
+//	//趟数
+//	for (i = 0; i < len - 1; i++) {
+//		//一趟冒泡
+//		for (j = 0; j < len - 1 - i; j++) {
+//			if (arr[j] > arr[j + 1]) {
+//				int tmp = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = tmp;
+//				flag = 0;
+//			}
+//		}
+//		if (flag == 1) {
+//			break;
+//		}
+//	}
+//}
+
+//类型必须这样写
+//比较两个整型元素
+//e1指向一个元素
+//e2指向一个元素
+//void*是无具体类型的指针，可以接受任意类型的地址。所以不能解引用操作，也不能+-整数
+//#include <stdlib.h>
+//int cmp_int(const void* e1, const void* e2) {
+//	return (*(int*)e1 - *(int*)e2);//升序
+//	//return (*(int*)e2 - *(int*)e1);//降序
+//}
+//
+//int main() {
+//	int arr[] = { 9, 3, 6, 0, 7, 10, 88, 2, 9, 4 };
+//	int len = sizeof(arr) / sizeof(arr[0]);
+//	//bobble_sort(arr, len);
+//	//库函数qsort快速排序 参数1.排序元素的起始位置 2.排序元素的长度 3.每个元素的大小 4.比较方式
+//	qsort(arr, len, sizeof(arr[0]), cmp_int);
+//
+//	for (int i = 0; i < len; i++) {
+//		printf("%d ", arr[i]);
+//	}
+//
+//	return 0;
+//}
+
+//int cmp_int(const void* e1, const void* e2) {
+//	return (*(int*)e1 - *(int*)e2);
+//}
+//
+//void Swap(char* buf1, char* buf2, int width) {
+//	int i = 0;
+//	for (i = 0; i < width; i++) {
+//		int tmp = *buf1;
+//		*buf1++ = *buf2;
+//		*buf2++ = tmp;
+//	}
+//}
+//
+//void bobble_sort(void* base, int sz, int width, int (*cmp)(const void* e1, const void* e2)) {
+//	//冒泡排序 升序
+//	int i = 0;
+//	int j = 0;
+//	int flag = 1;//假设数组是排好序的
+//	//趟数
+//	for (i = 0; i < sz - 1; i++) {
+//		//一趟冒泡
+//		for (j = 0; j < sz - 1 - i; j++) {
+//			if (cmp((char*)base + j * width, (char*)base + (j + 1) * width) > 0) {
+//				//交换
+//				Swap((char*)base + j * width, (char*)base + (j + 1) * width, width);
+//				flag = 0;
+//			}
+//		}
+//		if (flag == 1) {
+//			break;
+//		}
+//	}
+//}
+//
+//int main() {
+//	int arr[] = { 9, 3, 6, 0, 7, 10, 88, 2, 9, 4 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	bobble_sort(arr, sz, sizeof(arr[0]), cmp_int);
+//
+//	for (int i = 0; i < sz; i++) {
+//		printf("%d ", arr[i]);
+//	}
+//
+//	return 0;
+//}
+
+// int cmp_int(void *e1, void *e2) {
+//     return *(int *) e1 - *(int *) e2;
+// }
+//
+// void Swap(char *e1, char *e2, int width) {
+//     int i = 0;
+//     for (i = 0; i < width; i++) {
+//         int tmp = *e1;
+//         *e1++ = *e2;
+//         *e2++ = tmp;
+//     }
+// }
+//
+// void bobble_sort(void *arr, int sz, int width, int (*cmp)(void *e1, void *e2)) {
+//     int i = 0;
+//     int j = 0;
+//     int flag = 1; //假设数组有序
+//
+//     for (i = 0; i < sz - 1; i++) {
+//         for (j = 0; j < sz - i - 1; j++) {
+//             if (cmp((char *) arr + j * width, (char *) arr + (j + 1) * width) > 0) {
+//                 //排序
+//                 Swap((char *) arr + j * width, (char *) arr + (j + 1) * width, width);
+//                 flag = 0;
+//             }
+//         }
+//         if (flag) {
+//             break;
+//         }
+//     }
+// }
+//
+// //写一个排序函数
 // int main() {
-// 	int x = 0;//arr1的数组元素个数
-// 	int y = 0;//arr2的数组元素个数
-// 	scanf("%d %d", &x, &y);
-// 	int arr1[x];
-// 	int arr2[y];
-// 	int arr[x + y];//将arr1 arr2合并到arr
+//     int arr[] = {9, 3, 6, 0, 7, 10, 88, 2, 9, 4};
+//     int sz = sizeof(arr) / sizeof(arr[0]);
 //
-// 	int i = 0;
-// 	int j = 0;
-// 	for (i = 0; i < x; i++) {
-// 		scanf("%d", &arr1[i]);
-// 	}
-// 	for (i = 0; i < y; i++) {
-// 		scanf("%d", &arr2[i]);
-// 	}
-// 	//合并·
-//     i = 0;
-// 	for (j = 0; j < x; j++) {
-// 		arr[i++] = arr1[j];
-// 	}
-// 	for (j = 0; j < y; j++) {
-// 		arr[i++] = arr2[j];
-// 	}
-// 	//冒泡排序
-// 	for (j = 0; j < x + y - 1; j++) {
-// 		for (i = 0; i < x + y - j - 1; i++) {
-// 			if (arr[i] > arr[i + 1]) {
-// 				int tmp = arr[i];
-// 				arr[i] = arr[i + 1];
-// 				arr[i + 1] = tmp;
-// 			}
-// 		}
-// 	}
-// 	for (i = 0; i < x + y; i++) {
-// 		printf("%d ", arr[i]);
-// 	}
+//     bobble_sort(arr, sz, sizeof(arr[0]), cmp_int);
 //
-// 	return 0;
+//     for (int i = 0; i < sz; i++) {
+//         printf("%d ", arr[i]);
+//     }
+//
+//     return 0;
 // }
 
 int main() {
-    
+    printf("你好世界");
+
     return 0;
 }
